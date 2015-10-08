@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song-library>
+    <metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+        <release id="318020b6-0da0-4958-9ed6-04fd3d0fa85f">
+            <title>All the Way</title>
+            <status>Official</status>
+            <quality>high</quality>
+            <packaging>None</packaging>
+            <text-representation>
+                <language>eng</language>
+                <script>Latn</script>
+            </text-representation>
+            <artist-credit>
+                <name-credit>
+                    <artist id="4388976f-9e02-42d9-b66f-1b9e124e3ca6">
+                        <name>Timeflies</name>
+                        <sort-name>Timeflies</sort-name>
+                    </artist>
+                </name-credit>
+            </artist-credit>
+            <date>2014-01-20</date>
+            <country>US</country>
+            <release-event-list count="1">
+                <release-event>
+                    <date>2014-01-20</date>
+                    <area id="489ce91b-6658-3307-9877-795b68554c98">
+                        <name>United States</name>
+                        <sort-name>United States</sort-name>
+                        <iso-3166-1-code-list>
+                            <iso-3166-1-code>US</iso-3166-1-code>
+                        </iso-3166-1-code-list>
+                    </area>
+                </release-event>
+            </release-event-list>
+            <barcode>602537720644</barcode>
+            <asin>B00HRN0PCQ</asin>
+            <cover-art-archive>
+                <artwork>true</artwork>
+                <count>1</count>
+                <front>true</front>
+                <back>false</back>
+            </cover-art-archive>
+            <label-info-list count="1">
+                <label-info>
+                    <label id="3b5b82e2-5fc5-4961-b14a-6361fb9788f8">
+                        <name>Forty8Fifty</name>
+                        <sort-name>Forty8Fifty</sort-name>
+                    </label>
+                </label-info>
+            </label-info-list>
+            <medium-list count="1">
+                <medium>
+                    <position>1</position>
+                    <format>Digital Media</format>
+                    <disc-list count="0"/>
+                    <track-list offset="0" count="1">
+                        <track id="f045d842-0498-483e-aeb5-7c1c5c6ced1c">
+                            <position>1</position>
+                            <number>1</number>
+                            <length>179000</length>
+                            <recording id="d117c85b-acae-4e4f-b6a7-ba208dc6adb4">
+                                <title>All the Way</title>
+                                <length>179000</length>
+                                <artist-credit>
+                                    <name-credit>
+                                        <artist id="4388976f-9e02-42d9-b66f-1b9e124e3ca6">
+                                            <name>Timeflies</name>
+                                            <sort-name>Timeflies</sort-name>
+                                        </artist>
+                                    </name-credit>
+                                </artist-credit>
+                            </recording>
+                        </track>
+                    </track-list>
+                </medium>
+            </medium-list>
+        </release>
+    </metadata>
+</song-library>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+    <release id="268dbd2a-d6e8-47b3-a598-4cf4dfa03644">
+        <title>Backseat</title>
+        <status>Official</status>
+        <quality>normal</quality>
+        <text-representation>
+            <language>eng</language>
+            <script>Latn</script>
+        </text-representation>
+        <artist-credit>
+            <name-credit joinphrase=" feat. ">
+                <artist id="8e1d63a3-2980-4d69-ba61-1024e8a6df4b">
+                    <name>New Boyz</name>
+                    <sort-name>New Boyz</sort-name>
+                </artist>
+            </name-credit>
+            <name-credit joinphrase=" & ">
+                <artist id="50d9d3ee-8947-4079-9d73-b01dd3e71d8a">
+                    <name>The Cataracs</name>
+                    <sort-name>Cataracs, The</sort-name>
+                </artist>
+            </name-credit>
+            <name-credit>
+                <artist id="7cc04f00-4c8f-40ea-894c-5f65777b3575">
+                    <name>Dev</name>
+                    <sort-name>Dev</sort-name>
+                    <disambiguation>American rapper/singer Devin Star Tailes</disambiguation>
+                    <alias-list count="1">
+                        <alias sort-name="Devin Star Tailes">Devin Star Tailes</alias>
+                    </alias-list>
+                </artist>
+            </name-credit>
+        </artist-credit>
+        <date>2011-02-14</date>
+        <country>US</country>
+        <release-event-list count="1">
+            <release-event>
+                <date>2011-02-14</date>
+                <area id="489ce91b-6658-3307-9877-795b68554c98">
+                    <name>United States</name>
+                    <sort-name>United States</sort-name>
+                    <iso-3166-1-code-list>
+                        <iso-3166-1-code>US</iso-3166-1-code>
+                    </iso-3166-1-code-list>
+                </area>
+            </release-event>
+        </release-event-list>
+        <asin>B004LLAM3O</asin>
+        <cover-art-archive>
+            <artwork>false</artwork>
+            <count>0</count>
+            <front>false</front>
+            <back>false</back>
+        </cover-art-archive>
+        <label-info-list count="1">
+            <label-info>
+                <label id="c595c289-47ce-4fba-b999-b87503e8cb71">
+                    <name>Warner Bros. Records</name>
+                    <sort-name>Warner Bros. Records</sort-name>
+                    <disambiguation>
+                        “WB” logo, with or without “records” beneath or on banner across.
+                    </disambiguation>
+                    <label-code>392</label-code>
+                    <alias-list count="8">
+                        <alias sort-name="WB Records" type="Search hint">WB Records</alias>
+                        <alias sort-name="Warner Bros">Warner Bros</alias>
+                        <alias sort-name="Warner Bros Records">Warner Bros Records</alias>
+                        <alias sort-name="Warner Bros UK">Warner Bros UK</alias>
+                        <alias sort-name="Warner Bros. (Japan)">Warner Bros. (Japan)</alias>
+                        <alias type="Label name" sort-name="Warner Bros.-Seven Arts" locale="en" end-date="1970" begin-date="1967">Warner Bros.-Seven Arts</alias>
+                        <alias sort-name="Warner Brothers">Warner Brothers</alias>
+                        <alias sort-name="Warner Brothers Records">Warner Brothers Records</alias>
+                    </alias-list>
+                </label>
+            </label-info>
+        </label-info-list>
+        <medium-list count="1">
+            <medium>
+                <position>1</position>
+                <format>Digital Media</format>
+                <disc-list count="0"/>
+                <track-list count="3" offset="0">
+                    <track id="4f620c47-1ec4-3eca-9ddc-245a01301e2c">
+                        <position>1</position>
+                        <number>1</number>
+                        <length>224000</length>
+                        <recording id="790c3824-eda1-4182-a5e9-ee53b1e7201f">
+                            <title>Backseat</title>
+                            <length>224000</length>
+                            <artist-credit>
+                                <name-credit joinphrase=" feat. ">
+                                    <artist id="8e1d63a3-2980-4d69-ba61-1024e8a6df4b">
+                                        <name>New Boyz</name>
+                                        <sort-name>New Boyz</sort-name>
+                                    </artist>
+                                </name-credit>
+                                <name-credit joinphrase=" & ">
+                                    <artist id="50d9d3ee-8947-4079-9d73-b01dd3e71d8a">
+                                        <name>The Cataracs</name>
+                                        <sort-name>Cataracs, The</sort-name>
+                                    </artist>
+                                </name-credit>
+                                <name-credit>
+                                    <artist id="7cc04f00-4c8f-40ea-894c-5f65777b3575">
+                                        <name>Dev</name>
+                                        <sort-name>Dev</sort-name>
+                                        <disambiguation>American rapper/singer Devin Star Tailes</disambiguation>
+                                        <alias-list count="1">
+                                            <alias sort-name="Devin Star Tailes">Devin Star Tailes</alias>
+                                        </alias-list>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                    <track id="4786668b-6b21-314a-be57-4e2686edca7b">
+                        <position>2</position>
+                        <number>2</number>
+                        <length>224000</length>
+                        <recording id="7239e17a-12c7-40cb-b469-56feebc70039">
+                            <title>Backseat (instrumental)</title>
+                            <length>224000</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="8e1d63a3-2980-4d69-ba61-1024e8a6df4b">
+                                        <name>New Boyz</name>
+                                        <sort-name>New Boyz</sort-name>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                    <track id="ea22bf62-3f8a-37e6-80ac-4f7fa5e666a0">
+                        <position>3</position>
+                        <number>3</number>
+                        <length>190000</length>
+                        <recording id="229690ba-7cbd-418f-8b5c-81841d8c2e9f">
+                            <title>Tough Kids</title>
+                            <length>190000</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="8e1d63a3-2980-4d69-ba61-1024e8a6df4b">
+                                        <name>New Boyz</name>
+                                        <sort-name>New Boyz</sort-name>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                </track-list>
+            </medium>
+        </medium-list>
+    </release>
+</metadata>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+    <release id="b266751b-2c9e-4a15-90f0-226bf0019e54">
+        <title>All Night Longer</title>
+        <status>Official</status>
+        <quality>normal</quality>
+        <packaging>None</packaging>
+        <text-representation>
+            <language>eng</language>
+            <script>Latn</script>
+        </text-representation>
+        <artist-credit>
+            <name-credit>
+                <artist id="2d187d80-9d67-4ab6-99e4-a466b222554a">
+                    <name>Sammy Adams</name>
+                    <sort-name>Sammy Adams</sort-name>
+                    <alias-list count="1">
+                        <alias sort-name="Sam Adams" type="Search hint">Sam Adams</alias>
+                    </alias-list>
+                </artist>
+            </name-credit>
+        </artist-credit>
+        <date>2012-08-21</date>
+        <country>US</country>
+        <release-event-list count="1">
+            <release-event>
+                <date>2012-08-21</date>
+                <area id="489ce91b-6658-3307-9877-795b68554c98">
+                    <name>United States</name>
+                    <sort-name>United States</sort-name>
+                    <iso-3166-1-code-list>
+                        <iso-3166-1-code>US</iso-3166-1-code>
+                    </iso-3166-1-code-list>
+                </area>
+            </release-event>
+        </release-event-list>
+        <cover-art-archive>
+            <artwork>true</artwork>
+            <count>1</count>
+            <front>true</front>
+            <back>false</back>
+        </cover-art-archive>
+        <label-info-list count="0"/>
+        <medium-list count="1">
+            <medium>
+                <position>1</position>
+                <format>Digital Media</format>
+                <disc-list count="0"/>
+                <track-list count="1" offset="0">
+                    <track id="1b6b77d1-d1db-3f4f-ae97-baa581b80609">
+                        <position>1</position>
+                        <number>1</number>
+                        <length>177000</length>
+                        <recording id="1efe9ae7-ae06-430b-9f05-0f0ffa4c56c5">
+                            <title>All Night Longer</title>
+                            <length>177000</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="2d187d80-9d67-4ab6-99e4-a466b222554a">
+                                        <name>Sammy Adams</name>
+                                        <sort-name>Sammy Adams</sort-name>
+                                        <alias-list count="1">
+                                            <alias type="Search hint" sort-name="Sam Adams">Sam Adams</alias>
+                                        </alias-list>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                </track-list>
+            </medium>
+        </medium-list>
+    </release>
+</metadata>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+    <release id="c207b9e2-ff4b-4149-8139-4b6e8f960ba4">
+        <title>Keep Your Head Up</title>
+        <status>Official</status>
+        <quality>normal</quality>
+        <text-representation>
+            <language>eng</language>
+            <script>Latn</script>
+        </text-representation>
+        <artist-credit>
+            <name-credit>
+                <artist id="9e60ea29-9607-4f7d-aa96-2092ef41f0d3">
+                    <name>Andy Grammer</name>
+                    <sort-name>Grammer, Andy</sort-name>
+                </artist>
+            </name-credit>
+        </artist-credit>
+        <date>2010-10-12</date>
+        <country>US</country>
+        <release-event-list count="1">
+            <release-event>
+                <date>2010-10-12</date>
+                <area id="489ce91b-6658-3307-9877-795b68554c98">
+                    <name>United States</name>
+                    <sort-name>United States</sort-name>
+                    <iso-3166-1-code-list>
+                        <iso-3166-1-code>US</iso-3166-1-code>
+                    </iso-3166-1-code-list>
+                </area>
+            </release-event>
+        </release-event-list>
+        <asin>B0045CMDS6</asin>
+        <cover-art-archive>
+            <artwork>false</artwork>
+            <count>0</count>
+            <front>false</front>
+            <back>false</back>
+        </cover-art-archive>
+        <label-info-list count="1">
+            <label-info>
+                <label id="508797d9-e5c3-4376-be2e-30b3bb58eca7">
+                    <name>S‐Curve Records</name>
+                    <sort-name>S‐Curve Records</sort-name>
+                </label>
+            </label-info>
+        </label-info-list>
+        <medium-list count="1">
+            <medium>
+                <position>1</position>
+                <format>Digital Media</format>
+                <disc-list count="0"/>
+                <track-list count="1" offset="0">
+                    <track id="2cafbe8d-c870-389c-bb4f-9ef8fd30d8b6">
+                        <position>1</position>
+                        <number>1</number>
+                        <length>189000</length>
+                        <recording id="5b458d60-ff24-496c-8ae9-4f83844c2f93">
+                            <title>Keep Your Head Up</title>
+                            <length>190000</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="9e60ea29-9607-4f7d-aa96-2092ef41f0d3">
+                                        <name>Andy Grammer</name>
+                                        <sort-name>Grammer, Andy</sort-name>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                </track-list>
+            </medium>
+        </medium-list>
+    </release>
+</metadata>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+    <release id="8502f4ed-187c-4cd4-8082-68a944cd3a18">
+        <title>First Date</title>
+        <status>Official</status>
+        <quality>normal</quality>
+        <text-representation>
+            <language>eng</language>
+            <script>Latn</script>
+        </text-representation>
+        <artist-credit>
+            <name-credit>
+                <artist id="0743b15a-3c32-48c8-ad58-cb325350befa">
+                    <name>blink‐182</name>
+                    <sort-name>blink‐182</sort-name>
+                    <alias-list count="5">
+                        <alias sort-name="Blink 182">Blink 182</alias>
+                        <alias sort-name="Blink 182°">Blink 182°</alias>
+                        <alias sort-name="Blink‐182">Blink‐182</alias>
+                        <alias sort-name="blink ‐ 182">blink ‐ 182</alias>
+                        <alias sort-name="blink182">blink182</alias>
+                    </alias-list>
+                </artist>
+            </name-credit>
+        </artist-credit>
+        <date>2001-10-08</date>
+        <country>US</country>
+        <release-event-list count="1">
+            <release-event>
+                <date>2001-10-08</date>
+                <area id="489ce91b-6658-3307-9877-795b68554c98">
+                    <name>United States</name>
+                    <sort-name>United States</sort-name>
+                    <iso-3166-1-code-list>
+                        <iso-3166-1-code>US</iso-3166-1-code>
+                    </iso-3166-1-code-list>
+                </area>
+            </release-event>
+        </release-event-list>
+        <cover-art-archive>
+            <artwork>false</artwork>
+            <count>0</count>
+            <front>false</front>
+            <back>false</back>
+        </cover-art-archive>
+        <label-info-list count="1">
+            <label-info>
+                <label id="46a3941a-c810-47a1-974f-955effec4d09">
+                    <name>MCA Records</name>
+                    <sort-name>MCA Records</sort-name>
+                    <disambiguation>1967–2003; name as in imprint from 1972–1990</disambiguation>
+                    <label-code>1056</label-code>
+                    <alias-list count="5">
+                        <alias sort-name="1056">1056</alias>
+                        <alias sort-name="LC01056">LC01056</alias>
+                        <alias sort-name="MCA">MCA</alias>
+                        <alias sort-name="MCA Records Inc">MCA Records Inc</alias>
+                        <alias sort-name="MCA Records, Inc.">MCA Records, Inc.</alias>
+                    </alias-list>
+                </label>
+            </label-info>
+        </label-info-list>
+        <medium-list count="1">
+            <medium>
+                <position>1</position>
+                <format>CD</format>
+                <disc-list count="0"/>
+                <track-list count="3" offset="0">
+                    <track id="2f5f2d8f-169d-3cc5-ae04-b653a7d8aafe">
+                        <position>1</position>
+                        <number>1</number>
+                        <length>171000</length>
+                        <recording id="99bfd38c-6f6d-49a5-8b97-f42b8d5edf89">
+                            <title>First Date</title>
+                            <length>171493</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="0743b15a-3c32-48c8-ad58-cb325350befa">
+                                        <name>blink‐182</name>
+                                        <sort-name>blink‐182</sort-name>
+                                        <alias-list count="5">
+                                            <alias sort-name="Blink 182">Blink 182</alias>
+                                            <alias sort-name="Blink 182°">Blink 182°</alias>
+                                            <alias sort-name="Blink‐182">Blink‐182</alias>
+                                            <alias sort-name="blink ‐ 182">blink ‐ 182</alias>
+                                            <alias sort-name="blink182">blink182</alias>
+                                        </alias-list>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                    <track id="86b36db4-6e5a-35ad-9ec4-01e1f4e4b678">
+                        <position>2</position>
+                        <number>2</number>
+                        <title>Don't Tell Me It's Over</title>
+                        <length>154000</length>
+                        <recording id="5280aa73-d1c0-491f-b3ef-708d809cd58b">
+                            <title>Don’t Tell Me It’s Over</title>
+                            <length>154000</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="0743b15a-3c32-48c8-ad58-cb325350befa">
+                                        <name>blink‐182</name>
+                                        <sort-name>blink‐182</sort-name>
+                                        <alias-list count="5">
+                                            <alias sort-name="Blink 182">Blink 182</alias>
+                                            <alias sort-name="Blink 182°">Blink 182°</alias>
+                                            <alias sort-name="Blink‐182">Blink‐182</alias>
+                                            <alias sort-name="blink ‐ 182">blink ‐ 182</alias>
+                                            <alias sort-name="blink182">blink182</alias>
+                                        </alias-list>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                            <alias-list count="1">
+                                <alias sort-name="Don't Tell Me That It's Over">Don't Tell Me That It's Over</alias>
+                            </alias-list>
+                        </recording>
+                    </track>
+                    <track id="e9fa5ab5-e22c-3d6d-9d88-aa7b43632aa4">
+                        <position>3</position>
+                        <number>3</number>
+                        <title>Mother's Day</title>
+                        <length>97000</length>
+                        <recording id="aa3545bc-2d50-44f4-ac22-859de99e4413">
+                            <title>Mother’s Day</title>
+                            <length>97560</length>
+                            <artist-credit>
+                                <name-credit>
+                                    <artist id="0743b15a-3c32-48c8-ad58-cb325350befa">
+                                        <name>blink‐182</name>
+                                        <sort-name>blink‐182</sort-name>
+                                        <alias-list count="5">
+                                            <alias sort-name="Blink 182">Blink 182</alias>
+                                            <alias sort-name="Blink 182°">Blink 182°</alias>
+                                            <alias sort-name="Blink‐182">Blink‐182</alias>
+                                            <alias sort-name="blink ‐ 182">blink ‐ 182</alias>
+                                            <alias sort-name="blink182">blink182</alias>
+                                        </alias-list>
+                                    </artist>
+                                </name-credit>
+                            </artist-credit>
+                        </recording>
+                    </track>
+                </track-list>
+            </medium>
+        </medium-list>
+    </release>
+</metadata>
