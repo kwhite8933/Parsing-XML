@@ -99,12 +99,31 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
 
             return STARTING_COMMENT;
         }
+        
     } else if ((strLine.find_first_of('<') == string::npos) && (strLine.find("--"))) {
 
         return ENDING_COMMENT;
 
     }
-
+    else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<?") != string::npos) ){
+        
+        size_t start = strLine.find_first_of('?');
+        size_t end = strLine.find_last_of('?');
+        strContent = strLine.substr( start, start-end );
+        return DIRECTIVE;
+        
+    }
+    else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<!--") != string::npos) ){
+        
+        
+        size_t start = strLine.find_first_of(' ');
+        size_t end = strLine.find("-->");
+        strContent = strLine.substr( start + 1, end-start-1 );
+        cout << strContent << endl;
+        return ONE_LINE_COMMENT;
+        
+    }
+    
     return UNKNOWN;
 
 }
