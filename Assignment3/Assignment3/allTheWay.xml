@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <song-library>
-    <metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#">
+    <!-- This is a comment -->
+    <!-- This is a
+    two line comment -->
+    <metadata xmlns="http://musicbrainz.org/ns/mmd-2.0#" id="22">
         <release id="318020b6-0da0-4958-9ed6-04fd3d0fa85f">
             <title>All the Way</title>
             <status>Official</status>
