@@ -85,26 +85,42 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
     }
 
     //cout << strLine << endl;
-
+    
+    
+    
+    
+    // if no closing tag is found on the line, the line must be part of a multi-
+    // line comment.  In this case, we must check if the multi-line comment has
+    // just started or if it has already begun to be processed
     if (strLine.find(">") == string::npos) {
 
+        // returns IN_COMMENT when the the parser already knows if the line being
+        // processed is a comment
         if ((currentState == STARTING_COMMENT) || (currentState == IN_COMMENT)) {
 
             strContent = strLine;
             cout << strContent << endl;
             return IN_COMMENT;
         }
-
+        
+        // Parser returns STARTING_COMMENT when the opening tag of a line is found
+        // and is followed by the '!--' denoting a comment
         if (strLine.find("!--")) {
 
             return STARTING_COMMENT;
         }
-        
+      // if there is no opening tag found on the line, the line must be a member
+      // of a multi-line comment.  In which case, search for an ending comment tag
+      // and return ENDING_COMMENT
     } else if ((strLine.find_first_of('<') == string::npos) && (strLine.find("--"))) {
 
         return ENDING_COMMENT;
 
     }
+    
+    // An XML directive must the first in an XML file and is wrapped in '?'
+    // characters.  Search for these to find the XML directive and return
+    // the DIRECTIVE state.
     else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<?") != string::npos) ){
         
         size_t start = strLine.find_first_of('?');
@@ -113,6 +129,10 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
         return DIRECTIVE;
         
     }
+    
+    // if the opening tag on a line is actually a comment ('<!--'), check to see,
+    // if there is a closing tag ('-->') on the same line.  If so, the current
+    // line being processed is a one line comment so return ONE_LINE_COMMENT
     else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<!--") != string::npos) ){
         
         
