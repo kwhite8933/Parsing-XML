@@ -77,17 +77,6 @@ void ShowState(ParserState ps) {
 
 ParserState GetXMLData(string strLine, int nLineNo, string strElementName, string& strContent,
     int nStartPos, int nEndPos, ParserState currentState) {
-
-    if (currentState == STARTING_DOCUMENT) {
-
-        cout << " I'm Working " << endl;
-
-    }
-
-    //cout << strLine << endl;
-    
-    
-    
     
     // if no closing tag is found on the line, the line must be part of a multi-
     // line comment.  In this case, we must check if the multi-line comment has
@@ -139,9 +128,52 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
         size_t start = strLine.find_first_of(' ');
         size_t end = strLine.find("-->");
         strContent = strLine.substr( start + 1, end-start-1 );
-        cout << strContent << endl;
         return ONE_LINE_COMMENT;
         
+    }
+    
+    // If there is an opening angle bracket and that angle bracket is a closing
+    // tag, then return ELEMENT_CLOSING__TAG
+    else if( (strLine.find_first_of('<') != string::npos ) && (strLine.find_first_of('/') == 
+                                                              strLine.find_first_of('<') + 1) ){
+        
+    return ELEMENT_CLOSING_TAG;    
+        
+    }
+    
+    // Otherwise, an opening tag has been found and should be processed as such
+    else
+    {
+        
+        // Check if there is a closing tag on the same line and return ELEMENT_NAME_AND_CONTENT
+        string strOpening = strElementName;
+        if ( strLine.rfind("</" + strElementName) != string::npos )
+        {
+            
+            size_t start = strLine.find_first_of('>');
+            size_t end = strLine.find("</");
+            strContent = strLine.substr( start + 1, end-start-1 );
+            return ELEMENT_NAME_AND_CONTENT;
+            
+        }
+        // if the opening and closing tag are not on the same line, check
+        // to see a self-closing tag is on that line.  If so, return SELF_CLOSING_TAG
+        else if ( (strLine.find_first_of('>') != string::npos ) && (strLine.find_first_of('>') ==
+                                                                    strLine.find_first_of('/') + 1) )
+        {
+        
+            strContent = "";
+            return SELF_CLOSING_TAG;
+        
+        }
+        // If none of these other cases are true but an opening tag is found,
+        // the line contains just an opening tag so return ELEMENT_OPENING_TAG
+        else
+        {
+        
+            return ELEMENT_OPENING_TAG;
+        
+        }
     }
     
     return UNKNOWN;
