@@ -64,3 +64,11 @@ void Element::SetStrTagName(string strTagName) {
 string Element::GetStrTagName() const {
     return strTagName;
 }
+
+void Element::SetStrContext(string strContext) {
+    this->strContext = strContext;
+}
+
+string Element::GetStrContext() const {
+    return strContext;
+}

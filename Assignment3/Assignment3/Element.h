@@ -27,9 +27,12 @@ public:
     string trim( string& str );
     void SetStrTagName(string strTagName);
     string GetStrTagName() const;
+    void SetStrContext(string strContext);
+    string GetStrContext() const;
 private:
     string strElement; // current tag
     string strTagName; // name of element extracted from an element opening tag
+    string strContext; // Sets the context of the current element
     int nLineNo; // current line number
     vector<Element*> vecChildren; // vector of children
 };

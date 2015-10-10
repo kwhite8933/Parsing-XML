@@ -24,7 +24,7 @@ using namespace std;
  * 
  */
 
-Element* root; // Pointer to the root element of the XML document
+Element* root = NULL; // Pointer to the root element of the XML document
 
 vector<Element*> vecElementStack; // The stack of elements in the XML hierarchy.
 
@@ -73,6 +73,36 @@ void ShowState(ParserState ps) {
             break;
     }
     cout << endl;
+}
+
+ParserState newState( ParserState &currentState,
+                      string currentTag,
+                      string currentContext,
+                      int currentLine)
+{
+
+    switch (currentState)
+    {
+    
+        case ELEMENT_OPENING_TAG : 
+            
+            if( vecElementStack.size() == 0 )
+            {
+                
+                (*root).SetNLineNo(1);
+                (*root).SetStrContext(currentContext);
+                (*root).SetStrTagName(currentTag);
+                vecElementStack.at(currentLine) = root;
+                vecElementStack.push_back(root);
+                //cout << root << endl;
+            
+            }
+    
+    }
+    
+    
+    return UNKNOWN;
+    
 }
 
 ParserState GetXMLData(string strLine, int nLineNo, string strElementName, string& strContent,
@@ -243,6 +273,7 @@ int main(int argc, char** argv) {
 
         cout << nLineNo << " : ";
         ShowState(state);
+        state = newState(state, strTag, strContent, nLineNo);
         strContent = ""; // empties the string of content to allow for tags without
         // any attributes to print correctly
 
