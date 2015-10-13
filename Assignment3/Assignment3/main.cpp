@@ -165,6 +165,8 @@ ParserState newState(ParserState &currentState,
                 }
 
             }
+            
+            cout << endl; 
 
             break;
     }
