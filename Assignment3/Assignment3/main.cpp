@@ -24,7 +24,13 @@ using namespace std;
  * 
  */
 
-Element* root = NULL; // Pointer to the root element of the XML document
+// creates a vector to be populated with xml elements and their line numbers
+vector<Element*> ElementFound;
+    
+
+Element* root; // Pointer to the root element of the XML document
+
+Element* currentElement; // Pointer to the current Element in the stack
 
 vector<Element*> vecElementStack; // The stack of elements in the XML hierarchy.
 
@@ -41,7 +47,7 @@ enum ParserState {
  * @param ps the parser state
  */
 void ShowState(ParserState ps) {
-    cout << "ParserState = ";
+    cout << "*** ";
     switch (ps) {
         case UNKNOWN: cout << "UNKNOWN";
             break;
@@ -75,6 +81,7 @@ void ShowState(ParserState ps) {
     cout << endl;
 }
 
+// function that will handle pushing and popping the stack of children
 ParserState newState( ParserState &currentState,
                       string currentTag,
                       string currentContext,
@@ -86,22 +93,60 @@ ParserState newState( ParserState &currentState,
     
         case ELEMENT_OPENING_TAG : 
             
+            // if the stack is empty, current element must be the root
             if( vecElementStack.size() == 0 )
             {
                 
-                (*root).SetNLineNo(1);
-                (*root).SetStrContext(currentContext);
-                (*root).SetStrTagName(currentTag);
-                vecElementStack.at(currentLine) = root;
-                vecElementStack.push_back(root);
-                //cout << root << endl;
-            
+                root = new Element("",0);
+                
+                if( root == NULL){
+                    return ERROR;
+                }
+                
+                root->SetNLineNo(currentLine);
+                root->SetStrContext(currentContext);
+                root->SetStrTagName(currentTag);
+                currentElement = root;
+                vecElementStack.push_back(root); // push root onto stack
+                
             }
-    
+            // otherwise, there is a child of the root and must be pushed onto stack
+            else
+            {
+                Element* child = new Element;
+                child->SetNLineNo(currentLine);
+                child->SetStrContext(currentContext);
+                child->SetStrTagName(currentTag);
+                vecElementStack.push_back(child);
+            }
+            
+            for( int i=0 ; i<vecElementStack.size() ; i++){
+                
+                cout << vecElementStack.at(i)->GetStrTagName() << " ";
+                
+            }
+            
+            cout << endl;
+            
+            break;
+            
+        case ELEMENT_NAME_AND_CONTENT : 
+            
+            break;
+            
+        case SELF_CLOSING_TAG :
+            
+            break;
+            
+        case ELEMENT_CLOSING_TAG :
+            
+            vecElementStack.pop_back();
+            currentElement = vecElementStack.back();
+            
+            break;
     }
     
-    
-    return UNKNOWN;
+    return currentState;
     
 }
 
@@ -118,7 +163,7 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
         if ((currentState == STARTING_COMMENT) || (currentState == IN_COMMENT)) {
 
             strContent = strLine;
-            cout << strContent << endl;
+            //cout << strContent << endl;
             return IN_COMMENT;
         }
         
@@ -212,9 +257,6 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
 
 int main(int argc, char** argv) {
 
-    // creates a vector to be populated with xml elements and their line numbers
-    vector<Element*> ElementFound;
-
     // accesses the file to be read
     ifstream infile("allTheWay.xml"); //gets the xml file
     string strLine; // string of the line we are currently on
@@ -232,8 +274,6 @@ int main(int argc, char** argv) {
         nLineNo++;
 
     }
-
-    ShowState(state);
 
     for (vector<Element*>::iterator it = ElementFound.begin();
         it != ElementFound.end(); ++it) {
@@ -271,8 +311,9 @@ int main(int argc, char** argv) {
         state = GetXMLData((*it)->GetStrElement(), nLineNo, strTag, strContent,
             nStartPos, nEndPos, state);
 
-        cout << nLineNo << " : ";
+        cout << nLineNo << ": " << strTrimmedTag << endl;
         ShowState(state);
+        cout << endl;
         state = newState(state, strTag, strContent, nLineNo);
         strContent = ""; // empties the string of content to allow for tags without
         // any attributes to print correctly
