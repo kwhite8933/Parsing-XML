@@ -24,7 +24,13 @@ using namespace std;
  * 
  */
 
+// creates a vector to be populated with xml elements and their line numbers
+vector<Element*> ElementFound;
+
+
 Element* root; // Pointer to the root element of the XML document
+
+Element* currentElement; // Pointer to the current Element in the stack
 
 vector<Element*> vecElementStack; // The stack of elements in the XML hierarchy.
 
@@ -41,7 +47,7 @@ enum ParserState {
  * @param ps the parser state
  */
 void ShowState(ParserState ps) {
-    cout << "ParserState = ";
+    cout << "*** ";
     switch (ps) {
         case UNKNOWN: cout << "UNKNOWN";
             break;
@@ -75,9 +81,103 @@ void ShowState(ParserState ps) {
     cout << endl;
 }
 
+// function that will handle pushing and popping the stack of children
+
+ParserState newState(ParserState &currentState,
+    string currentTag,
+    string currentContext,
+    int currentLine) {
+
+    switch (currentState) {
+
+        case ELEMENT_OPENING_TAG:
+
+            // if the stack is empty, current element must be the root
+            if (vecElementStack.size() == 0) {
+
+                root = new Element("", 0);
+
+                if (root == NULL) {
+                    return ERROR;
+                }
+                root->SetNLineNo(currentLine);
+                root->SetStrContext(currentContext);
+                root->SetStrTagName(currentTag);
+                currentElement = root;
+                vecElementStack.push_back(root); // push root onto stack
+
+            }                
+            // otherwise, there is a child of the root and must be pushed onto stack
+            else {
+                Element* child = new Element;
+                child->SetNLineNo(currentLine);
+                child->SetStrContext(currentContext);
+                child->SetStrTagName(currentTag);
+                vecElementStack.push_back(child);
+            }
+
+            cout << "Vector (stack) now contains: ";
+            for (int i = 0; i < vecElementStack.size(); i++) {
+
+                cout << vecElementStack.at(i)->GetStrTagName() << " ";
+
+            }
+
+            cout << endl;
+
+            break;
+
+        case ELEMENT_NAME_AND_CONTENT:
+
+            // Opening and closing tag on the same line, nothing is every pushed
+            // onto the stack
+            cout << "*** Complete element found:" << endl
+                << "***   Element Name = " << currentTag << endl
+                << "***   Element Content = " << currentContext << endl
+                << "*** Vector (stack) unchanged." << endl;
+
+            break;
+
+        case SELF_CLOSING_TAG:
+
+            // self-closing tag so it ends on one line and thus, nothing is pushed
+            // onto the stack
+            cout << "*** Self-closing element found:" << endl
+                << "***   Element Name = " << currentTag << endl
+                << "***   Element Content = " << ((currentContext == "") ? "{EMPTY}" :
+                currentContext) << endl;
+            cout << "*** Vector (stack) unchanged." << endl;
+
+            break;
+
+        case ELEMENT_CLOSING_TAG:
+
+            // Pop closing tag off the stack and print out the new stack
+            vecElementStack.pop_back();
+            currentElement = vecElementStack.back();
+
+            cout << "*** Vector (stack) now contains: ";
+            for (int i = 0; i < vecElementStack.size(); i++) {
+                if (vecElementStack.size() == 0) {
+                    cout << "{EMPTY}";
+                } else {
+                    cout << vecElementStack.at(i)->GetStrTagName() << " ";
+                }
+
+            }
+            
+            cout << endl; 
+
+            break;
+    }
+
+    return currentState;
+
+}
+
 ParserState GetXMLData(string strLine, int nLineNo, string strElementName, string& strContent,
     int nStartPos, int nEndPos, ParserState currentState) {
-    
+
     // if no closing tag is found on the line, the line must be part of a multi-
     // line comment.  In this case, we must check if the multi-line comment has
     // just started or if it has already begun to be processed
@@ -88,102 +188,89 @@ ParserState GetXMLData(string strLine, int nLineNo, string strElementName, strin
         if ((currentState == STARTING_COMMENT) || (currentState == IN_COMMENT)) {
 
             strContent = strLine;
-            cout << strContent << endl;
+            //cout << strContent << endl;
             return IN_COMMENT;
         }
-        
+
         // Parser returns STARTING_COMMENT when the opening tag of a line is found
         // and is followed by the '!--' denoting a comment
         if (strLine.find("!--")) {
 
             return STARTING_COMMENT;
         }
-      // if there is no opening tag found on the line, the line must be a member
-      // of a multi-line comment.  In which case, search for an ending comment tag
-      // and return ENDING_COMMENT
+        // if there is no opening tag found on the line, the line must be a member
+        // of a multi-line comment.  In which case, search for an ending comment tag
+        // and return ENDING_COMMENT
     } else if ((strLine.find_first_of('<') == string::npos) && (strLine.find("--"))) {
 
         return ENDING_COMMENT;
 
     }
-    
-    // An XML directive must the first in an XML file and is wrapped in '?'
-    // characters.  Search for these to find the XML directive and return
-    // the DIRECTIVE state.
-    else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<?") != string::npos) ){
-        
+        // An XML directive must the first in an XML file and is wrapped in '?'
+        // characters.  Search for these to find the XML directive and return
+        // the DIRECTIVE state.
+    else if ((strLine.find_first_of('<') != string::npos) && (strLine.find("<?") != string::npos)) {
+
         size_t start = strLine.find_first_of('?');
         size_t end = strLine.find_last_of('?');
-        strContent = strLine.substr( start, start-end );
+        strContent = strLine.substr(start, start - end);
         return DIRECTIVE;
-        
+
     }
-    
-    // if the opening tag on a line is actually a comment ('<!--'), check to see,
-    // if there is a closing tag ('-->') on the same line.  If so, the current
-    // line being processed is a one line comment so return ONE_LINE_COMMENT
-    else if ( (strLine.find_first_of('<') != string::npos ) && (strLine.find("<!--") != string::npos) ){
-        
-        
+        // if the opening tag on a line is actually a comment ('<!--'), check to see,
+        // if there is a closing tag ('-->') on the same line.  If so, the current
+        // line being processed is a one line comment so return ONE_LINE_COMMENT
+    else if ((strLine.find_first_of('<') != string::npos) && (strLine.find("<!--") != string::npos)) {
+
+
         size_t start = strLine.find_first_of(' ');
         size_t end = strLine.find("-->");
-        strContent = strLine.substr( start + 1, end-start-1 );
+        strContent = strLine.substr(start + 1, end - start - 1);
         return ONE_LINE_COMMENT;
-        
+
     }
-    
-    // If there is an opening angle bracket and that angle bracket is a closing
-    // tag, then return ELEMENT_CLOSING__TAG
-    else if( (strLine.find_first_of('<') != string::npos ) && (strLine.find_first_of('/') == 
-                                                              strLine.find_first_of('<') + 1) ){
-        
-    return ELEMENT_CLOSING_TAG;    
-        
+        // If there is an opening angle bracket and that angle bracket is a closing
+        // tag, then return ELEMENT_CLOSING__TAG
+    else if ((strLine.find_first_of('<') != string::npos) && (strLine.find_first_of('/') ==
+        strLine.find_first_of('<') + 1)) {
+
+        return ELEMENT_CLOSING_TAG;
+
     }
-    
-    // Otherwise, an opening tag has been found and should be processed as such
-    else
-    {
-        
+        // Otherwise, an opening tag has been found and should be processed as such
+    else {
+
         // Check if there is a closing tag on the same line and return ELEMENT_NAME_AND_CONTENT
         string strOpening = strElementName;
-        if ( strLine.rfind("</" + strElementName) != string::npos )
-        {
-            
+        if (strLine.rfind("</" + strElementName) != string::npos) {
+
             size_t start = strLine.find_first_of('>');
             size_t end = strLine.find("</");
-            strContent = strLine.substr( start + 1, end-start-1 );
+            strContent = strLine.substr(start + 1, end - start - 1);
             return ELEMENT_NAME_AND_CONTENT;
-            
-        }
-        // if the opening and closing tag are not on the same line, check
-        // to see a self-closing tag is on that line.  If so, return SELF_CLOSING_TAG
-        else if ( (strLine.find_first_of('>') != string::npos ) && (strLine.find_first_of('>') ==
-                                                                    strLine.find_first_of('/') + 1) )
-        {
-        
+
+        }            // if the opening and closing tag are not on the same line, check
+            // to see a self-closing tag is on that line.  If so, return SELF_CLOSING_TAG
+        else if ((strLine.find_first_of('>') != string::npos) && (strLine.find_first_of('>') ==
+            strLine.find_first_of('/') + 1)) {
+
             strContent = "";
             return SELF_CLOSING_TAG;
-        
-        }
-        // If none of these other cases are true but an opening tag is found,
-        // the line contains just an opening tag so return ELEMENT_OPENING_TAG
-        else
-        {
-        
+
+        }            // If none of these other cases are true but an opening tag is found,
+            // the line contains just an opening tag so return ELEMENT_OPENING_TAG
+        else {
+
             return ELEMENT_OPENING_TAG;
-        
+
         }
     }
-    
+
     return UNKNOWN;
 
 }
 
 int main(int argc, char** argv) {
-
-    // creates a vector to be populated with xml elements and their line numbers
-    vector<Element*> ElementFound;
 
     // accesses the file to be read
     ifstream infile("allTheWay.xml"); //gets the xml file
@@ -202,8 +289,6 @@ int main(int argc, char** argv) {
         nLineNo++;
 
     }
-
-    ShowState(state);
 
     for (vector<Element*>::iterator it = ElementFound.begin();
         it != ElementFound.end(); ++it) {
@@ -241,32 +326,16 @@ int main(int argc, char** argv) {
         state = GetXMLData((*it)->GetStrElement(), nLineNo, strTag, strContent,
             nStartPos, nEndPos, state);
 
-        cout << nLineNo << " : ";
+        cout << nLineNo << ": " << strTrimmedTag << endl;
         ShowState(state);
+        state = newState(state, strTag, strContent, nLineNo);
+        cout << endl;
         strContent = ""; // empties the string of content to allow for tags without
         // any attributes to print correctly
-
-        // ignores the line/tag if it is a closing tag
-        //        if ((strTrimmedTag.at(nStartPos + 1) != ('/')) &&
-        //          (strTrimmedTag.at(nStartPos + 1) != ('?'))) {
-        //
-
-
-        //                // gets the current line number
-        //                nLineNo = (*it)->GetNLineNo();
-        //                // prints the tag out with an offset of 4 spaces from the right for easier reading
-        //                cout << setw(4) << nLineNo << " : " << strTag << endl;
-        //                
-        //                // if there are attributes in the tag, print them
-        //                if( strContent != "" ){
-        //                    cout << "******" << strContent << endl << endl;
-        //                    
-        //                    // empties the string containing any attributes for the next
-        //                    // check to be made
-        //                    strContent = "";
-        //    }
-        //        }
+    
     }
+
+    cout << endl << "Done.";
 
     // closes the file being read from/used
     infile.close();
